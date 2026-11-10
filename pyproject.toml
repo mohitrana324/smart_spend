@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61,<76", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smartspend"
+version = "0.1.0"
+description = "A command-line personal expense tracker"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "requests>=2.31,<3",
+    "aiohttp>=3.8,<3.11",
+]
+
+[project.scripts]
+smartspend = "smartspend.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["smartspend*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["smartspend"]
+branch = true
+
+[tool.mypy]
+python_version = "3.8"
+files = ["smartspend"]
